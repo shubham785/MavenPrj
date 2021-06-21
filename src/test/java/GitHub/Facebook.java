@@ -1,5 +1,7 @@
 package GitHub;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -7,19 +9,33 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.SkipException;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 public class Facebook 
 	{
 		public static WebDriver driver;
 		
-		 //public ExtentHtmlReporter htmlReporter;
-		//public ExtentReports extent;
-		//public ExtentTest test;
+		public ExtentHtmlReporter htmlReporter;
+		public ExtentReports extent;
+		public ExtentTest test;
 
 		@BeforeMethod
-		public void LaunchBrowser()
+		public void LaunchBrowserTest()
 		{
 			System.setProperty("webdriver.chrome.driver", "F:\\Eclipse\\BrowserDriver\\chromedriver.exe");
 			driver = new ChromeDriver();
@@ -34,7 +50,7 @@ public class Facebook
 		public void loginTest() {	
 		count++;
 		System.out.println(count);
-		driver.findElement(By.cssSelector("input[id='email']")).sendKeys("shufhamchaurasia.rock@gmail.com");
+		driver.findElement(By.cssSelector("input[id='email']")).sendKeys("asfdsgfdgdfgfb@gmail.com");
 		driver.findElement(By.cssSelector("input[id='pass']")).sendKeys("idon'tknow");
 		driver.findElement(By.cssSelector("button[name='login']")).click();
 		driver.findElement(By.xpath("//div[@id='login_link']/div/a[text()='Forgotten password?']")).click();
@@ -62,7 +78,7 @@ public class Facebook
 		}
 		
 		@Test(priority=3)
-		public void regTest2() 
+		public void reggTest() 
 		{
 		driver.findElement(By.xpath("//a[text()='Create New Account']")).click();
 		driver.findElement(By.xpath("//div/div/input[@name='firstname']")).sendKeys("Raguvendra");
